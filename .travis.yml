@@ -1,0 +1,21 @@
+language: c
+
+sudo: false
+
+env:
+  global:
+    - RACKET_DIR: '~/racket'
+    - GH_REF: 'github.com/lexi-lambda/tulip-grammar.git'
+    - secure: 'EFie2eswSpDGY8N/GmwkEgUzi0tQ56LAtSuiX8LGWbI1c21DHspIy/UVmz22Bj2aXNJ2wmBYelqmesRHTqdl+6E0lpdHtF34Wu7eYxlRtuUi1JS20UBCx6sTDAR32SZ9yJ50j4TixM02Z0ZWcbx8daH4a2uogqTQiu9QCCHlkJtu/QGQCo5Jhiuk4c+5nfvwp6xodQWW21njXSpOWZk3sp6DCRhYInrjfMZAMu3UgD6XU8wBn994mLCjnZAkv+NspJNZrDMDf2+EDW7gz1wyOhNn8MR8VqUefsgWOkK1TyLzK7UTIYuqRlsas6p7Ud3QP96rzQqhRsQoC7CSFrWF+vTOQ1Ps/1HQcdFHOTTveFxRgGi4hGIeSbXAAJk42r1PtXBjZNikurdJiUARQvqQxtDl06kntN6C6NiW9tuCulYjiaZdZuNJctor2+9+wF6sn/YJgpm63z66tQ2/TPH4zq6+iiEPF3lang/ptlBpBbECuSwzzrPh+GOKdypNoS2iDJ/LFRlq0nl/d5L+6JUwJH77V6YQOXcaiceWrg2JaDMTdha+sYGM7ew/wIhdj41ndB5FMuzRtyC3DgPIjaX1OCZVXX3B7I6gYDNZ5aqBAb7zq63KOv6m05OdiZ2qRKYxR+D0aP8JSQZ+2jVUv8a5c9Rvf+3AmxnUHtChtYMcx8k='
+  matrix:
+    - RACKET_VERSION: 6.6
+
+before_install:
+  - git clone https://github.com/greghendershott/travis-racket.git
+  - cat travis-racket/install-racket.sh | bash
+  - export PATH="${RACKET_DIR}/bin:${PATH}"
+
+install:
+
+script:
+  - bash deploy.sh
